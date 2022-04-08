@@ -5,7 +5,7 @@ const app = express();
 app.use(express.json());
 
 app.get("/", (req, res) => {
-  res.send("hello world");
+  res.send("hello world from heroku");
 });
 app.get("/getCourses", async (req, res) => {
   try {
@@ -53,6 +53,7 @@ app.delete("/course/:id", async (req, res) => {
     res.status(500).json({ err: "Something went wrong" });
   }
 });
-app.listen(3000, () => {
-  console.log("server is running on port no 3000");
+const port = process.env.PORT || "5000";
+app.listen(port, () => {
+  console.log(`server is running on port no ${port}`);
 });
