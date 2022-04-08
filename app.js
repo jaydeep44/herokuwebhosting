@@ -5,7 +5,7 @@ const app = express();
 app.use(express.json());
 
 app.get("/", (req, res) => {
-  res.send("hello world from heroku");
+  res.send("hello world from herokugit ");
 });
 app.get("/getCourses", async (req, res) => {
   try {
@@ -21,7 +21,7 @@ app.post("/addCourse", async (req, res) => {
   const course = req.body;
   try {
     const newcourse = await addOrUpdateCourse(course);
-    res.json(newcourse);
+    res.json(course);
   } catch (error) {
     res.status(500).json({
       ERR: "something went wrong",
@@ -36,7 +36,7 @@ app.put("/updateCourse/:id", async (req, res) => {
 
   try {
     const newcourse = await addOrUpdateCourse(course);
-    res.json(newcourse);
+    res.json(course);
   } catch (error) {
     res.status(500).json({
       ERR: "something went wrong",
